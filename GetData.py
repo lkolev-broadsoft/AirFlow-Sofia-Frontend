@@ -13,7 +13,7 @@ if (air_request.ok):
     api_data = [{}]
     jData = json.loads(air_request.content)
     print(jData)
-
+#Use numpy array to get the location values of each sensor and check if it is in the Sofia area, sofia_radius = 9km
     #print(json.dumps(jData, indent=4, sort_keys=True))
 
 else:
