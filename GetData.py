@@ -1,6 +1,7 @@
 import requests
 import json
 import numpy as np
+import pandas as pd
 
 url = 'http://api.luftdaten.info/static/v2/data.24h.json'
 air_request = requests.get(url, verify = True)
@@ -12,8 +13,8 @@ if (air_request.ok):
     # Loads (Load String) takes a Json file and converts into python data structure (dict or list, depending on JSON)
     api_data = [{}]
     jData = json.loads(air_request.content)
-    print(jData)
-#Use numpy array to get the location values of each sensor and check if it is in the Sofia area, sofia_radius = 9km
+    #print(jData)
+
     #print(json.dumps(jData, indent=4, sort_keys=True))
 
 else:
@@ -21,3 +22,5 @@ else:
     air_request.raise_for_status()
 
 
+AirDataFrame = pd.DataFrame(pd.read_json(url))
+print(AirDataFrame.head())
